@@ -1,0 +1,61 @@
+<!-- Page.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <style>
+      #dropzone {
+        width: 300px;
+        height: 200px;
+        border: 2px dashed #aaa;
+        line-height: 200px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="dropzone">Drag & Drop CSV Here</div>
+    Column Number: <input type="number" id="columnNumber" min="1" value="1">
+    <button onclick="handleUpload()">Import</button>
+
+    <script>
+      var parsedData;
+
+      var dropzone = document.getElementById('dropzone');
+
+      dropzone.addEventListener('dragover', function(e) {
+      e.preventDefault(); 
+      });
+
+      dropzone.addEventListener('drop', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        var files = e.dataTransfer.files;
+        var reader = new FileReader();
+        
+        reader.onload = function(event) {
+          var csvData = event.target.result;
+          console.log("csvData", csvData);
+          parsedData = Papa.parse(csvData, {dynamicTyping: true}).data;
+          console.log("parsedData",parsedData);
+        }
+        
+        reader.readAsText(files[0]);
+      });
+
+      function handleUpload() {
+        var columnNumber = document.getElementById('columnNumber').value;
+         console.log("columnNumber",columnNumber);
+          console.log("handleUpload parsedData",parsedData);
+        google.script.run.saveData(parsedData, columnNumber);
+        google.script.host.close();
+      }
+
+      function errorHandler(error) {
+        console.error("Error in calling Apps Script function:", error);
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  </body>
+</html>
