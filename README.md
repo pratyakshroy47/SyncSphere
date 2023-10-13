@@ -27,5 +27,5 @@ With the CSV Importer as your guide, data importation transforms into an epic ad
 
 ## Project Demo
 
-Watch the video demonstration [here]([https://drive.google.com/uc?export=download&id=YOUR_VIDEO_ID](https://drive.google.com/file/d/1FZFaosrpIFqhy7y1G5eB_95Zb5AX7Ue5/view?usp=sharing)https://drive.google.com/file/d/1FZFaosrpIFqhy7y1G5eB_95Zb5AX7Ue5/view?usp=sharing).
+Watch the video demonstration [here](https://drive.google.com/file/d/1FZFaosrpIFqhy7y1G5eB_95Zb5AX7Ue5/view?usp=sharing).
 
